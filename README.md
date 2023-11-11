@@ -8,13 +8,13 @@ Express API Initializer is a tool designed to streamline the process of generati
 Ensure you have [node.js](https://nodejs.org/)) installed, then install express-api-initializer globally using [npm](https://www.npmjs.com/):
 
 ```bash
-npm install -g express-api-inializer
+npm install -g express-api-initializer
 ```
 
 To create a new project, run:
 
 ```bash
-express-inializer new <app-name>
+express-initializer new <app-name>
 ```
 Your app structure will be initialized as follows:
 
@@ -49,7 +49,7 @@ node index.js
 Generate resources using plural nouns:
 
 ```bash
-express-inializer g resource <resource-name> 
+express-initializer g resource <resource-name> 
 ```
 
 ## Controller Generation
@@ -57,7 +57,7 @@ express-inializer g resource <resource-name>
 Generate controllers using:
 
 ```bash
-express-inializer g controller <controller-name>
+express-initializer g controller <controller-name>
 ```
 
 ## Controller Generation
@@ -65,14 +65,14 @@ express-inializer g controller <controller-name>
 Generate models using:
 
 ```bash
-express-inializer g model <model-name>
+express-initializer g model <model-name>
 ```
 ## Route Generation
 
 Generate routes using:
 
 ```bash
-express-inializer g route <route-name>
+express-initializer g route <route-name>
 ```
 ## Middleware Generation
 
@@ -80,7 +80,7 @@ Generate middleware using:
 
 
 ```bash
-express-inializer g middleware <middleware-name>
+express-initializer g middleware <middleware-name>
 ```
 
 Feel free to use these commands to efficiently scaffold and organize your Express.js applications.
