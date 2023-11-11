@@ -1,69 +1,86 @@
-# express-api-inializer
+# Express API Initializer
 
-express-api-inializer used for generate Express js app
+Express API Initializer is a tool designed to streamline the process of generating Express.js applications.
 
 
-## Installing express-api-inializer
+## Installation
 
-First, install express-api-inializer using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+Ensure you have [node.js](https://nodejs.org/)) installed, then install express-api-initializer globally using [npm](https://www.npmjs.com/):
 
 ```bash
 npm install -g express-api-inializer
 ```
 
-Then generate your new project:
+To create a new project, run:
 
 ```bash
 express-inializer new <app-name>
 ```
-And  your app initialized like this:
+Your app structure will be initialized as follows:
 
-app
- ┣ config
- ┣ src
- ┃ ┣ controllers
- ┃ ┃ ┗ users.controller.js
- ┃ ┣ middlewares
- ┃ ┃ ┣ error.middleware.js
- ┃ ┃ ┗ users.middleware.js
- ┃ ┣ models
- ┃ ┃ ┗ users.model.js
- ┃ ┣ routes
- ┃ ┃ ┗ users.route.js
- ┃ ┗ app.js
- ┣ index.js
- ┗ package.json
+<pre>
+📦app
+ ┣ 📂config
+ ┣ 📂src
+ ┃ ┣ 📂controllers
+ ┃ ┃ ┗ 📜users.controller.js
+ ┃ ┣ 📂middlewares
+ ┃ ┃ ┣ 📜error.middleware.js
+ ┃ ┃ ┗ 📜users.middleware.js
+ ┃ ┣ 📂models
+ ┃ ┃ ┗ 📜users.model.js
+ ┃ ┣ 📂routes
+ ┃ ┃ ┗ 📜users.route.js
+ ┃ ┗ 📜app.js
+ ┣ 📜index.js
+ ┗ 📜package.json
+</pre>
 
+To start the app, navigate to the project directory and run:
 
-to generate Resources new project:
+```bash
+cd <app-name>
+npm install express express-async-handler
+node index.js
+```
+
+## Resource Generation
+
+Generate resources using plural nouns:
 
 ```bash
 express-inializer g resource <resource-name> 
 ```
-use Plural Nouns
 
-to generate Controller new project:
+## Controller Generation
+
+Generate controllers using:
 
 ```bash
 express-inializer g controller <controller-name>
 ```
 
-tto generate Model new project:
+## Controller Generation
+
+Generate models using:
 
 ```bash
 express-inializer g model <model-name>
 ```
+## Route Generation
 
-to generate route new project:
+Generate routes using:
 
 ```bash
 express-inializer g route <route-name>
 ```
+## Middleware Generation
 
-to generate Middleware new project:
+Generate middleware using:
+
 
 ```bash
 express-inializer g middleware <middleware-name>
 ```
 
-
+Feel free to use these commands to efficiently scaffold and organize your Express.js applications.
