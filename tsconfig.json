@@ -11,7 +11,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node16",
-    "outDir": "dist" 
+    "outDir": "dist" ,
+    "resolveJsonModule": true
   },
   "include": ["src", "types.d.ts"]
 }

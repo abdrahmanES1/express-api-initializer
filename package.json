@@ -1,6 +1,6 @@
 {
   "name": "express-api-initializer",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "bin": {
     "express-initializer": "dist/src/index.js"
   },
