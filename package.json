@@ -1,0 +1,34 @@
+{
+  "name": "express-api-inializer",
+  "version": "0.0.1",
+  "bin": {
+    "express-inializer": "./dist/src/index.js"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "link-cli": "(npm unlink --global express-inializer || true) && chmod +x ./dist/src/index.js  && npm link --global express-inializer",
+    "start": "cd dist && node ./src/index.js",
+    "ci":"npm run build",
+    "release":"npm run ci && npm run start"
+  },
+  "keywords": [
+    "api",
+    "express",
+    "cli",
+    "server"
+  ],
+  "author": "Abderrahman ESSEBYITY",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "4.0.0",
+    "cli-select": "^1.1.2",
+    "commander": "^11.1.0",
+    "figlet": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "typescript": "^5.2.2"
+  }
+}
