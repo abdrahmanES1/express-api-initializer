@@ -10,8 +10,8 @@
     "build": "tsc",
     "link-cli": "(npm unlink --global express-inializer || true) && chmod +x ./dist/src/index.js  && npm link --global express-inializer",
     "start": "cd dist && node ./src/index.js",
-    "ci":"npm run build",
-    "release":"npm run ci && npm run start"
+    "ci": "npm run build",
+    "release": "npm run ci && npm run start"
   },
   "keywords": [
     "api",
@@ -31,7 +31,7 @@
     "@types/node": "^20.9.0",
     "typescript": "^5.2.2"
   },
-  "repository":"https://github.com/abdrahmanES1/express-api-inializer",
+  "repository": "https://github.com/abdrahmanES1/express-api-inializer",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }

@@ -24,7 +24,6 @@ export default async (appName: string, options: any, callback: Function) => {
         await writeFile(`${appName}/src/middlewares/error.middleware${getFilesExtention(options)}`, errorMiddlewareTemplate())
         callback()
     } catch (error: any) {
-        
         console.log(chalk.red(error.message));
     } 
 
