@@ -1,8 +1,8 @@
 {
   "name": "express-api-initializer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "bin": {
-    "express-initializer": "./dist/src/index.js"
+    "express-initializer": "dist/src/index.js"
   },
   "description": "",
   "main": "index.js",
@@ -31,5 +31,8 @@
     "@types/node": "^20.9.0",
     "typescript": "^5.2.2"
   },
-  "repository": "https://github.com/abdrahmanES1/express-api-initializer.git"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdrahmanES1/express-api-initializer.git"
+  }
 }
