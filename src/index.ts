@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import commander, { Command } from "commander";
-import createApp from '../util/createApp'
-import createFile from "../util/createFile";
+import createApp from '../util/createAppv2'
 const figlet = require("figlet");
 import chalk from "chalk";
 import cliSelect from "cli-select";
-import createResource from "../util/createResource";
 import packageJson from '../package.json'
+import createResources from "../util/createResources";
+import createResource from "../util/createResourcev2";
+
 
 const program = new Command();
 console.log(chalk.cyanBright(figlet.textSync(packageJson.name, {
@@ -22,7 +23,6 @@ program
     .option("-d, --debug", "output extra debugging")
     .option('-ts, --typescript', 'use TypeScript')
 
-type X = { id: number, value: string }
 program.command('new')
     .description('Create new Express App')
     .argument('<app-name>', 'App Name')
@@ -31,7 +31,7 @@ program.command('new')
         cliSelect({
             values: ['RESTful API', 'Web App'],
             selected: "👉",
-            unselected: " ",
+            unselected: "  ",
             cleanup: false,
             valueRenderer: (value, selected) => {
                 if (selected) {
@@ -41,7 +41,7 @@ program.command('new')
             },
         }).then(async (value) => {
             if (value.id === 0) {
-                await createApp(appName, options, () => { })
+                await createApp(appName, options)
                     .then(() => {
                         console.log(chalk.blue.bold(`\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉`));
                         console.log(chalk.blue.bold(`\n     cd ${appName}`));
@@ -51,10 +51,12 @@ program.command('new')
                         console.log(console.log(chalk.red(err)));
                     })
             }
+
             else console.log(chalk.blue(`🚧 🚧 🚧 Web app Coming soon .. 🚧 🚧 🚧`));
         })
 
     });
+
 
 
 
@@ -65,9 +67,10 @@ program.command('g')
     .argument('<file-name>', 'file name ex. users ')
     .action((fileType, fileName, options) => {
         if (fileType == "resource") {
-            createResource(`${process.cwd()}`, fileName, options);
+            createResources(`${process.cwd()}`, fileName, options);
         } else {
-            createFile(`${process.cwd()}`, fileType, fileName, options);
+
+            createResource(`${process.cwd()}`, fileType, fileName, options);
         }
     });
 

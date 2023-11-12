@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "link-cli": "(npm unlink --global express-initializer || true) && chmod +x ./dist/src/index.js  && npm link --global express-initializer",
+    "link-cli": "(yarn unlink --global express-initializer || true) && chmod +x ./dist/src/index.js  && yarn link --global express-initializer",
     "start": "cd dist && node ./src/index.js",
     "ci": "npm run build && npm run test",
     "release": "npm publish"

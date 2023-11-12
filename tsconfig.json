@@ -14,5 +14,5 @@
     "outDir": "dist" ,
     "resolveJsonModule": true
   },
-  "include": ["src", "types.d.ts"]
+  "include": ["src"]
 }

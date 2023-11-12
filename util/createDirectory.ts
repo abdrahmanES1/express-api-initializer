@@ -1,8 +1,8 @@
-import { existsSync, mkdirSync } from 'fs'
-function createDirectory(directoryPath) {
-    if (!existsSync(directoryPath)) {
-        mkdirSync(directoryPath, { recursive: true });
+import { existsSync, promises as fs, } from 'fs';
+
+async function createDirectory(directoryPath: string): Promise<void> {
+    if (!await existsSync(directoryPath)) {
+        await fs.mkdir(directoryPath, { recursive: true });
     }
 }
-
 export default createDirectory;
