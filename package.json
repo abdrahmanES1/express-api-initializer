@@ -4,14 +4,15 @@
   "bin": {
     "express-initializer": "dist/src/index.js"
   },
-  "description": "",
+  "description": "Express API Initializer is a tool designed to streamline the process of generating Express.js applications.  ",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
     "build": "tsc",
     "link-cli": "(npm unlink --global express-initializer || true) && chmod +x ./dist/src/index.js  && npm link --global express-initializer",
     "start": "cd dist && node ./src/index.js",
-    "ci": "npm run build",
-    "release": "npm run ci && npm run start"
+    "ci": "npm run build && npm run test",
+    "release": "npm publish"
   },
   "keywords": [
     "api",
