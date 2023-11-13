@@ -83,4 +83,12 @@ Generate middleware using:
 express-initializer g middleware <middleware-name>
 ```
 
+## Configuration Generation
+
+Generate configs using:
+
+```bash
+express-initializer g config <config-name>
+```
+
 Feel free to use these commands to efficiently scaffold and organize your Express.js applications.

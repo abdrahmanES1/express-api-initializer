@@ -1,7 +1,7 @@
 import { routeTemplate, controllerTemplate } from '../templates/js'
 import { existsSync } from 'fs'
 import chalk from 'chalk'
-import createResource from './createResourcev2'
+import createResource from './createResource'
 
 export default async (appName: string, fileName: string, options: any) => {
     if (existsSync(`${appName}/src`)) {

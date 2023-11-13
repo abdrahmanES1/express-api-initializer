@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import commander, { Command } from "commander";
-import createApp from '../util/createAppv2'
+import createApp from '../util/createApp'
 const figlet = require("figlet");
 import chalk from "chalk";
 import cliSelect from "cli-select";
 import packageJson from '../package.json'
 import createResources from "../util/createResources";
-import createResource from "../util/createResourcev2";
+import createResource from "../util/createResource";
 
 
 const program = new Command();
@@ -63,7 +63,7 @@ program.command('new')
 
 program.command('g')
     .description("Generate new App Resource  controller, model, middleware, route, resource")
-    .addArgument(new commander.Argument('<file-type>', 'file type Controller Service').choices(['controller', 'model', 'middleware', "route", "resource", "view"]))
+    .addArgument(new commander.Argument('<file-type>', 'file type Controller Service').choices(['controller', 'model', 'middleware', "route", "resource", "config"]))
     .argument('<file-name>', 'file name ex. users ')
     .action((fileType, fileName, options) => {
         if (fileType == "resource") {

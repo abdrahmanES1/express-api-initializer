@@ -1,19 +1,17 @@
 import chalk from "chalk";
-import { existsSync } from "fs";
 import { writeFile } from "fs/promises";
+import { existsSync } from "fs";
+export default async (filePath: string, fileContent = "") => {
 
-export default async (appName: string, fileType: string, fileName: string, options: any, fileContent = "") => {
-    const getFilesExtention = (options: any) => options?.typescript ? ".ts" : ".js";
-
-    if(existsSync(`${appName}/src/${fileType}s`)){
-        await writeFile(`${appName}/src/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`, fileContent).then(() => {
-            console.log(chalk.green(`🚀 CREATE /src/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`));
+    if (!await existsSync(filePath)) {
+        await writeFile(filePath, fileContent).then(() => {
+            console.log(chalk.green(`🚀 CREATE ${filePath}`));
+        }).catch((err) => {
+            console.log(chalk.bgRed(`${err}`));
+            console.log(chalk.red(`🚨 FAILED ${filePath}`));
+            console.log(chalk.red(`🚦 Initilize Project first`));
         })
-    }else
-    {
-        console.log(chalk.red(`🚨 FAILED /src/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`));
-        console.log(chalk.red(`🚦 Initilize Project first`));
-        return 
     }
-    
+
+
 }

@@ -1,28 +1,12 @@
-
-import createFile from './createFile'
-import { routeTemplate, controllerTemplate } from '../templates/js'
-import { existsSync } from 'fs'
-import chalk from 'chalk'
-
-export default async (appName: string, fileName: string, options: any) => {
-
-    if (existsSync(`${appName}/src`)) {
-        await Promise.race(
-            [
-                createFile(appName, "controller", fileName, options, controllerTemplate(fileName)),
-                createFile(appName, "middleware", fileName, options),
-                createFile(appName, "model", fileName, options),
-                createFile(appName, "route", fileName, options, routeTemplate(fileName)),
-                // createFile(appName, "view", fileName, options),
-            ]
-        )
+import createFile from "./createFile";
+export default async (appName: string, fileType: string, fileName: string, options: any, fileContent = "") => {
+    const getFilesExtention = (options: any) => options?.typescript ? ".ts" : ".js";
+    
+    if (fileType == "config") {
+        await createFile(`${appName}/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`, fileContent)
     } else {
-        console.log(chalk.red(`🚨 FAILED Creating Resource`));
-        console.log(chalk.underline.cyan(`🚦 Initilize Project first`));
-        return 
+        await createFile(`${appName}/src/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`, fileContent)
     }
 
+
 }
-
-
-
