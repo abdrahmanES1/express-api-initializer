@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import commander, { Command } from "commander";
-import createApp from '../util/createApp'
+import createApp from '../lib/createApp'
 const figlet = require("figlet");
 import chalk from "chalk";
 import cliSelect from "cli-select";
 import packageJson from '../package.json'
-import createResources from "../util/createResources";
-import createResource from "../util/createResource";
+import createResources from "../lib/createResources";
+import createResource from "../lib/createResource";
 
 
 const program = new Command();

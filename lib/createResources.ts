@@ -1,4 +1,4 @@
-import { routeTemplate, controllerTemplate } from '../templates/js'
+import { routeTemplate, controllerTemplate } from '../templates'
 import { existsSync } from 'fs'
 import chalk from 'chalk'
 import createResource from './createResource'

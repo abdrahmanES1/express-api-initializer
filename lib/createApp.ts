@@ -1,6 +1,6 @@
 import { exec } from "child_process";
 import chalk from "chalk";
-import { appTemplate, indexTemplate, errorMiddlewareTemplate } from "../templates/js"
+import { appTemplate, indexTemplate, errorMiddlewareTemplate } from "../templates"
 import createDirectory from "./createDirectory"
 import createFile from "./createFile"
 import createResources from "./createResources";
