@@ -7,12 +7,12 @@
   "description": "Express API Initializer is a tool designed to streamline the process of generating Express.js applications.  ",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles --coverage",
     "build": "tsc",
     "link-cli": "(yarn unlink --global express-initializer || true) && chmod +x ./dist/src/index.js  && yarn link --global express-initializer",
     "start": "cd dist && node ./src/index.js",
     "ci": "npm run build && npm run test",
-    "release": "npm publish"
+    "release": "npm ci && npm publish"
   },
   "keywords": [
     "api",
@@ -29,7 +29,9 @@
     "figlet": "^1.7.0"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.8",
     "@types/node": "^20.9.0",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   },
   "repository": {

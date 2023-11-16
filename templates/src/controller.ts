@@ -1,5 +1,5 @@
-import firstLetterUpperCase from '../../../helpers/firstLetterToUpperCase'
-import toSinglure from '../../../helpers/toSinglure'
+import firstLetterUpperCase from '../../helpers/firstLetterToUpperCase'
+import toSinglure from '../../helpers/toSinglure'
 
 export default function (fileName: string): string {
     const UpperCaseName = firstLetterUpperCase(fileName);

@@ -1,4 +1,4 @@
-import { existsSync, promises as fs, } from 'fs';
+import { existsSync, promises as fs } from 'fs';
 
 async function createDirectory(directoryPath: string): Promise<void> {
     if (!await existsSync(directoryPath)) {
