@@ -18,6 +18,13 @@ const getAll${UpperCaseName} = asyncHandler(async (req, res, next) => {
     });
 })
 
+const create${siglulareName} = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    res.status(200).send({
+        "success": true,
+    });
+});
+
 const get${siglulareName} = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     res.status(200).send({
@@ -46,7 +53,7 @@ const modify${siglulareName} = asyncHandler(async (req, res, next) => {
 
 
 
-module.exports = { getAll${UpperCaseName}, get${siglulareName}, delete${siglulareName}, modify${siglulareName} };
+module.exports = { getAll${UpperCaseName}, get${siglulareName}, create${siglulareName}, delete${siglulareName}, modify${siglulareName} };
     
     `
 }
