@@ -8,5 +8,4 @@ export default async (appName: string, fileType: string, fileName: string, optio
         await createFile(`${appName}/src/${fileType}s/${fileName}.${fileType}${getFilesExtention(options)}`, fileContent)
     }
 
-
 }
