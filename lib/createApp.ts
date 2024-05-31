@@ -1,14 +1,12 @@
 import { exec } from "child_process";
 import chalk from "chalk";
-import { appTemplate, indexTemplate, errorMiddlewareTemplate } from "../templates"
+import { appTemplate, indexTemplate, errorMiddlewareTemplate, packageTemplate } from "../templates"
 import createDirectory from "./createDirectory"
 import createFile from "./createFile"
 import createResources from "./createResources";
 
-
 export default async (appName: string, options: any) => {
     const getFilesExtention = (options: any) => options?.typescript ? ".ts" : ".js";
-
     try {
         // Create Directories
 
@@ -27,8 +25,9 @@ export default async (appName: string, options: any) => {
         await createFile(`${appName}/src/middlewares/error.middleware${getFilesExtention(options)}`, errorMiddlewareTemplate())
         await createFile(`${appName}/index${getFilesExtention(options)}`, indexTemplate());
         await createFile(`${appName}/src/app${getFilesExtention(options)}`, appTemplate());
-        await exec(`cd ${appName} && npm init -y`)
-
+        await createFile(`${appName}/package.json`, packageTemplate(appName));
+        await exec(`cd ${appName} && npm install`)
+        console.log(chalk.red("🪄 installing packages...."));
     } catch (error: any) {
         console.log(chalk.red("🚨 " + error.message));
         return

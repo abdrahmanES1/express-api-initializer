@@ -45,8 +45,8 @@ program.command('new')
                     .then(() => {
                         console.log(chalk.blue.bold(`\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉`));
                         console.log(chalk.blue.bold(`\n     cd ${appName}`));
-                        console.log(chalk.blue.bold(`     npm install express express-async-handler`));
-                        console.log(chalk.blue.bold(`     node index.js\n`));
+                        // console.log(chalk.blue.bold(`     npm install express express-async-handler`));
+                        console.log(chalk.blue.bold(`     npm start\n`));
                     }).catch((err) => {
                         console.log(console.log(chalk.red(err)));
                     })
@@ -69,7 +69,7 @@ program.command('g')
         if (fileType == "resource") {
             createResources(`${process.cwd()}`, fileName, options);
         } else {
-
+            
             createResource(`${process.cwd()}`, fileType, fileName, options);
         }
     });
