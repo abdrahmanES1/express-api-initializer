@@ -26,13 +26,19 @@ export default async (appName: string, options: any) => {
         await createFile(`${appName}/index${getFilesExtention(options)}`, indexTemplate());
         await createFile(`${appName}/src/app${getFilesExtention(options)}`, appTemplate());
         await createFile(`${appName}/package.json`, packageTemplate(appName));
+
+    } catch (error: any) {
+        console.log(chalk.red("🚨 " + error.message));
+        return
+    }
+    
+    try{
         await exec(`cd ${appName} && npm install`)
         console.log(chalk.red("🪄 installing packages...."));
     } catch (error: any) {
         console.log(chalk.red("🚨 " + error.message));
         return
     }
-
 }
 
 
