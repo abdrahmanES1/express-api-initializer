@@ -1,4 +1,4 @@
-import { routeTemplate, controllerTemplate } from '../templates'
+import { routeTemplate, controllerTemplate, schemaTemplate, modelTemplate, middlewareTemplate } from '../templates'
 import { existsSync } from 'fs'
 import chalk from 'chalk'
 import createResource from './createResource'
@@ -8,9 +8,10 @@ export default async (appName: string, fileName: string, options: any) => {
         await Promise.race(
             [
                 createResource(appName, "controller", fileName, options, controllerTemplate(fileName)),
-                createResource(appName, "middleware", fileName, options),
-                createResource(appName, "model", fileName, options),
+                createResource(appName, "middleware", fileName, options, middlewareTemplate(fileName)),
+                createResource(appName, "model", fileName, options,modelTemplate(fileName)),
                 createResource(appName, "route", fileName, options, routeTemplate(fileName)),
+                createResource(appName, "schema", fileName, options, schemaTemplate(fileName)),
                 // createFile(appName, "view", fileName, options),
             ]
         )

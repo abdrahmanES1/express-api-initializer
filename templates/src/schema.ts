@@ -19,10 +19,19 @@ export default function (fileName: string): string {
   };
 
   let template = `
-function {{siglulareName}}Middleware(error, request, response, next) {
-    next();
+const { z } = require("zod");
+
+const create{{siglulareUpperCaseName}}Schema = z.object({
+// TODO : fill the rules
+})
+const id{{siglulareUpperCaseName}}Schema = z.object({
+    id: z.string(),
+});
+
+module.exports = {
+    create{{siglulareUpperCaseName}}Schema,
+   id{{siglulareUpperCaseName}}Schema
 }
-module.exports = {{siglulareName}}Middleware;
 
 `;
 

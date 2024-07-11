@@ -19,10 +19,17 @@ export default function (fileName: string): string {
   };
 
   let template = `
-function {{siglulareName}}Middleware(error, request, response, next) {
-    next();
-}
-module.exports = {{siglulareName}}Middleware;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+
+const {{siglulareUpperCaseName}}Schema = new Schema({
+
+}, { timestamps: true })
+
+
+const {{siglulareUpperCaseName}} = mongoose.model("{{siglulareUpperCaseName}}", {{siglulareUpperCaseName}}Schema);
+module.exports = {{siglulareUpperCaseName}};
 
 `;
 

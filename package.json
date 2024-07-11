@@ -1,6 +1,6 @@
 {
   "name": "express-api-initializer",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "bin": {
     "express-initializer": "dist/src/index.js"
   },
@@ -27,11 +27,13 @@
     "cli-select": "^1.1.2",
     "commander": "^11.1.0",
     "figlet": "^1.7.0",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.8",
+    "pluralize": "^8.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.8",
     "@types/node": "^20.9.0",
+    "@types/pluralize": "^0.0.33",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   },

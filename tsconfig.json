@@ -14,5 +14,6 @@
     "outDir": "dist" ,
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "assets": ["**/*.hbs"],
+  "include": ["src", "templates"],
 }

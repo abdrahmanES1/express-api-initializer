@@ -1,39 +1,80 @@
-import firstLetterUpperCase from '../../helpers/firstLetterToUpperCase'
-import toSinglure from '../../helpers/toSinglure'
+import firstLetterToUpperCase from "../../helpers/firstLetterToUpperCase";
+import Handlebars from "handlebars";
+import pluralize from "pluralize";
 
 export default function (fileName: string): string {
-    const UpperCaseName = firstLetterUpperCase(fileName);
-    const siglulareName = toSinglure(UpperCaseName);
+  let correctFileName = pluralize.isPlural(fileName)
+    ? fileName.toLowerCase()
+    : pluralize.plural(fileName).toLowerCase();
 
-    return `
+  const context = {
+    fileName: correctFileName,
+    // e.g :  User
+    siglulareUpperCaseName: firstLetterToUpperCase(pluralize.singular(correctFileName).toLowerCase()),
+    // e.g : user
+    siglulareName: pluralize.singular(correctFileName).toLowerCase(),
+    //  e.g : Users
+    pluralizeUpperCaseName: firstLetterToUpperCase(correctFileName),
+    // e.g : users
+    pluralizeName: correctFileName,
+  };
+  let template = `
+const mongoose = require("mongoose");
 const asyncHandler = require('express-async-handler');
-const ${siglulareName} = require('../models/${fileName}.model');
+const {{siglulareUpperCaseName}} = require('../models/{{fileName}}.model');
+const ErrorResponse = require('../utils/errorResponse');
 
-const getAll${UpperCaseName} = asyncHandler(async (req, res, next) => {
+const getAll{{pluralizeUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { populate, min ,max } = req.query;
+    const {{pluralizeName}} = await {{siglulareUpperCaseName}}.find({});
 
     res.status(200).send({
         "success": true,
-        
+        {{pluralizeName}}
     });
 })
 
-const create${siglulareName} = asyncHandler(async (req, res, next) => {
+const create{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
+    
+    if (!mongoose.isValidObjectId(id)) {
+        return next(new ErrorResponse("id not valid", 403));
+    }
+    const {{siglulareName}} = await {{siglulareUpperCaseName}}.findById(id);
+    
+    if (!{{siglulareName}}) { return next(new ErrorResponse('{{siglulareName}} does not exist', 403)) }
+    res.status(200).send({
+        "success": true,
+        {{siglulareName}}
+    });
+});
+
+const get{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+
+    if (!mongoose.isValidObjectId(id)) {
+        return next(new ErrorResponse("id not valid", 403));
+    }
+    const {{siglulareName}} = await {{siglulareUpperCaseName}}.findById(id);
+    
+    if (!{{siglulareName}}) { return next(new ErrorResponse('{{siglulareName}} does not exist', 403)) }
+    res.status(200).send({
+        "success": true,
+        {{siglulareName}}
+    });
     res.status(200).send({
         "success": true,
     });
 });
 
-const get${siglulareName} = asyncHandler(async (req, res, next) => {
+const delete{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    res.status(200).send({
-        "success": true,
-    });
-});
+    const {{siglulareName}} = await {{siglulareUpperCaseName}}.deleteOne({ _id: id });
 
-const delete${siglulareName} = asyncHandler(async (req, res, next) => {
-    const { id } = req.params;
+
+    if ({{siglulareName}}.deletedCount == 0) {
+        return next(new ErrorResponse("{{siglulareName}} not found", 403))
+    }
 
     return res.status(200).send({
         "success": true
@@ -41,19 +82,28 @@ const delete${siglulareName} = asyncHandler(async (req, res, next) => {
 
 });
 
-const modify${siglulareName} = asyncHandler(async (req, res, next) => {
+const modify{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
+    const { {{siglulareName}} } = req.body;
+
+    if (!mongoose.isValidObjectId(id)) {
+        return next(new ErrorResponse("{{siglulareName}} id not valid", 403));
+    }
+
+    const exist{{siglulareUpperCaseName}} = await {{siglulareUpperCaseName}}.findByIdAndUpdate(id, { ...{{siglulareName}} });
+
+    if (!exist{{siglulareUpperCaseName}}) {
+        return next(new ErrorResponse("{{siglulareName}} not exist", 403));
+    }
 
     return res.status(200).send({
         "success": true,
-
+        {{siglulareName}}: exist{{siglulareUpperCaseName}}
     });
 });
 
+module.exports = { getAll{{pluralizeUpperCaseName}}, get{{siglulareUpperCaseName}}, create{{siglulareUpperCaseName}}, delete{{siglulareUpperCaseName}}, modify{{siglulareUpperCaseName}} };`;
 
-
-
-module.exports = { getAll${UpperCaseName}, get${siglulareName}, create${siglulareName}, delete${siglulareName}, modify${siglulareName} };
-    
-    `
+  const content = Handlebars.compile(template);
+  return content(context);
 }
