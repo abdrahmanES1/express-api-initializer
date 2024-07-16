@@ -1,6 +1,6 @@
 {
-  "name": "express-api-initializer",
-  "version": "2.0.0",
+  "name": "@abdrahmanES1/express-api-initializer",
+  "version": "2.0.3",
   "bin": {
     "express-initializer": "dist/src/index.js"
   },
@@ -42,6 +42,8 @@
     "url": "git+https://github.com/abdrahmanES1/express-api-initializer.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   }
+
 }

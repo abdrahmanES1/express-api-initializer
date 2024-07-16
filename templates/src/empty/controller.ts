@@ -1,4 +1,4 @@
-import firstLetterToUpperCase from "../../helpers/firstLetterToUpperCase";
+import firstLetterToUpperCase from "../../../helpers/firstLetterToUpperCase";
 import Handlebars from "handlebars";
 import pluralize from "pluralize";
 
@@ -27,25 +27,19 @@ const {{siglulareUpperCaseName}} = require('../models/{{fileName}}.model');
 const ErrorResponse = require('../utils/errorResponse');
 
 const getAll{{pluralizeUpperCaseName}} = asyncHandler(async (req, res, next) => {
-    const { populate, min ,max } = req.query;
-    const {{pluralizeName}} = await {{siglulareUpperCaseName}}.find({});
 
     res.status(200).send({
         "success": true,
-        {{pluralizeName}}
     });
 })
 
 const create{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { {{siglulareName}} } = req.body;
     
-    const new{{siglulareName}} = {{siglulareUpperCaseName}}.create({ ...{{siglulareName}} })
-    
-    new{{siglulareName}}.save();
-    
+
     res.status(200).send({
         "success": true,
-        {{siglulareName}} : new{{siglulareName}}
+        {{siglulareName}} : "data"
     });
 });
 
@@ -55,24 +49,15 @@ const get{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     if (!mongoose.isValidObjectId(id)) {
         return next(new ErrorResponse("id not valid", 403));
     }
-    const {{siglulareName}} = await {{siglulareUpperCaseName}}.findById(id);
-    
-    if (!{{siglulareName}}) { return next(new ErrorResponse('{{siglulareName}} does not exist', 403)) }
     res.status(200).send({
         "success": true,
-        {{siglulareName}}
+        {{siglulareName}} : "data"
     });
 
 });
 
 const delete{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
-    const {{siglulareName}} = await {{siglulareUpperCaseName}}.deleteOne({ _id: id });
-
-
-    if ({{siglulareName}}.deletedCount == 0) {
-        return next(new ErrorResponse("{{siglulareName}} not found", 403))
-    }
 
     return res.status(200).send({
         "success": true
@@ -88,15 +73,11 @@ const modify{{siglulareUpperCaseName}} = asyncHandler(async (req, res, next) => 
         return next(new ErrorResponse("{{siglulareName}} id not valid", 403));
     }
 
-    const exist{{siglulareUpperCaseName}} = await {{siglulareUpperCaseName}}.findByIdAndUpdate(id, { ...{{siglulareName}} });
 
-    if (!exist{{siglulareUpperCaseName}}) {
-        return next(new ErrorResponse("{{siglulareName}} not exist", 403));
-    }
 
     return res.status(200).send({
         "success": true,
-        {{siglulareName}}: exist{{siglulareUpperCaseName}}
+        {{siglulareName}}: "data"
     });
 });
 

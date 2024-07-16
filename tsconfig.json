@@ -12,7 +12,13 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node16",
     "outDir": "dist" ,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "assets": ["**/*.hbs"],
   "include": ["src", "templates"],

@@ -9,7 +9,9 @@ export default function (fileName: string): string {
   const context = {
     fileName: correctFileName,
     // e.g :  User
-    siglulareUpperCaseName: firstLetterToUpperCase(pluralize.singular(correctFileName).toLowerCase()),
+    siglulareUpperCaseName: firstLetterToUpperCase(
+      pluralize.singular(correctFileName).toLowerCase()
+    ),
     // e.g : user
     siglulareName: pluralize.singular(correctFileName).toLowerCase(),
     //  e.g : Users
@@ -27,7 +29,7 @@ const { create{{siglulareUpperCaseName}}Schema, id{{siglulareUpperCaseName}}Sche
 const route = Router();
 
 route.get('', getAll{{pluralizeUpperCaseName}});
-route.post('', validateData(id{{siglulareUpperCaseName}}Schema, "params"), create{{siglulareUpperCaseName}});
+route.post('', validateData(create{{siglulareUpperCaseName}}Schema, "body"), create{{siglulareUpperCaseName}});
 route.get('/:id', validateData(id{{siglulareUpperCaseName}}Schema, "params"), get{{siglulareUpperCaseName}});
 route.put('/:id', validateData(id{{siglulareUpperCaseName}}Schema, "params"), modify{{siglulareUpperCaseName}});
 route.delete('/:id', validateData(id{{siglulareUpperCaseName}}Schema, "params"), delete{{siglulareUpperCaseName}});

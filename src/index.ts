@@ -7,7 +7,13 @@ import cliSelect from "cli-select";
 import packageJson from "../package.json";
 import createResources from "../lib/createResources";
 import createResource from "../lib/createResource";
-
+import {
+  EmptyMiddleware,
+  EmptyModel,
+  EmptyRoute,
+  EmptySchema,
+  Emptycontroller,
+} from "../templates/src/empty";
 const program = new Command();
 console.log(
   chalk.cyanBright(
@@ -26,7 +32,8 @@ program
     "Express API Initializer is a tool designed to streamline the process of generating Express.js applications.    "
   )
   .option("-d, --debug", "output extra debugging")
-  .option("-ts, --typescript", "use TypeScript");
+  .option("-ts, --typescript", "use TypeScript")
+  .option("-v, --version", "package version");
 
 program
   .command("new")

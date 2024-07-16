@@ -18,26 +18,29 @@ express-initializer new <app-name>
 Your app structure will be initialized as follows:
 
 <pre>
-📦app
- ┣ 📂config
- ┣ 📂src
- ┃ ┣ 📂controllers
- ┃ ┃ ┗ 📜users.controller.js
- ┃ ┣ 📂middlewares
- ┃ ┃ ┣ 📜error.middleware.js
-<<<<<<< HEAD
- ┃ ┃ ┗ 📜users.middleware.js
- ┃ ┣ 📂models
- ┃ ┃ ┗ 📜users.model.js
- ┃ ┣ 📂schemas
- ┃ ┃ ┗ 📜users.schema.js
->>>>>>> 0663ff2 (init v2)
- ┃ ┣ 📂routes
- ┃ ┃ ┗ 📜users.route.js
- ┃ ┗ 📜app.js
+📦 app
+ ┣ 📂 config
+ ┃ ┗ 📜 database.config.js
+ ┣ 📂 src
+ ┃ ┣ 📂 controllers
+ ┃ ┃ ┗ 📜 users.controller.js
+ ┃ ┣ 📂 middlewares
+ ┃ ┃ ┣ 📜 error.middleware.js
+ ┃ ┃ ┣ 📜 users.middleware.js
+ ┃ ┃ ┗ 📜 validationMiddleware.middleware.js
+ ┃ ┣ 📂 models
+ ┃ ┃ ┗ 📜 users.model.js
+ ┃ ┣ 📂 schemas
+ ┃ ┃ ┗ 📜 users.schema.js
+ ┃ ┣ 📂 routes
+ ┃ ┃ ┗ 📜 users.route.js
+ ┃ ┣ 📂 utils
+ ┃ ┃ ┗ 📜 errorResponse.js
+ ┃ ┗ 📜 app.js
  ┣ .env.example
  ┣ .env
- ┗ 📜package.json
+ ┣ 📜 index.js
+ ┗ 📜 package.json
 </pre>
 
 To start the app, navigate to the project directory and run:
